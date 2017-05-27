@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="utf-8">
+    <title>Solo Project Spike</title>
+    <link rel="stylesheet" href="vendors/angular-material.css">
+
+    <script src="vendors/angular.min.js" charset="utf-8"></script>
+    <script src="vendors/angular-material.js" charset="utf-8"></script>
+
+    <script src="vendors/angular-route.min.js" charset="utf-8"></script>
+  	<script src="vendors/angular-animate.js"></script>
+    <script src="vendors/angular-aria.js"></script>
+    <script src="vendors/angular-messages.js"></script>
+    <!-- <script src="http://ngmaterial.assets.s3.amazonaws.com/svg-assets-cache.js"></script> -->
+    <script src="vendors/angular-material-icons.js" charset="utf-8"></script>
+    <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+    <script src="scripts/client.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body ng-app="MyApp">
+    <h1>Science 123 Quiz Question Generator</h1>
+    <div ng-controller="AppCtrl" class="md-padding checkboxdemoSyncing" style="min-height:270px">
+      <div layout="row" layout-wrap="">
+
+        <div flex="100" flex-gt-sm="50" layout="column">
+          <div>
+            <!--
+              In IE, we cannot apply flex directly to <fieldset>
+              @see https://github.com/philipwalton/flexbugs#9-some-html-elements-cant-be-flex-containers
+            -->
+            <fieldset class="standard">
+              <legend>Using md-checkbox with ng-checked </legend>
+              <div layout="row" layout-wrap="" flex="">
+                <div flex="50" ng-repeat="item in items">
+                  <md-checkbox ng-checked="exists(item, selected)" ng-click="toggle(item, selected)">
+                    {{ item }} <span ng-if="exists(item, selected)">selected</span>
+                  </md-checkbox>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+
+        <div flex="100" flex-gt-sm="50" layout="column">
+          <div>
+            <fieldset class="standard">
+              <legend>Using input type="checkbox"</legend>
+              <div layout="row" layout-wrap="" flex="">
+                <div ng-repeat="item in items" class="standard" flex="50">
+                  <label>
+                    <input type="checkbox" ng-checked="exists(item, selected)" ng-click="toggle(item, selected)">
+                    {{ item }}
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+
+        <div flex="100">
+          <h2 class="md-title">Selected Items</h2>
+          <code style="display: block; padding: 8px;">{{selected | json}}</code>
+        </div>
+      </div>
+
+
+    </div>
+
+  </body>
