@@ -1,12 +1,12 @@
 
-angular.module('MyApp',['ngMaterial','ngMessages','ngMdIcons'])
+var myApp = angular.module('myApp',['ngMaterial','ngMessages','ngMdIcons']);
 
-.controller('AppCtrl', function($scope) {
+myApp.controller('AppCtrl', function() {
+  var vm = this;
+    vm.items = [1,2,3,4,5];
+      vm.selected = [];
 
-    $scope.items = [1,2,3,4,5];
-      $scope.selected = [];
-
-      $scope.toggle = function (item, list) {
+      vm.toggle = function (item, list) {
         var idx = list.indexOf(item);
         if (idx > -1) {
           list.splice(idx, 1);
@@ -16,7 +16,7 @@ angular.module('MyApp',['ngMaterial','ngMessages','ngMdIcons'])
         }
       };
 
-      $scope.exists = function (item, list) {
+      vm.exists = function (item, list) {
         return list.indexOf(item) > -1;
       };
 });

@@ -18,9 +18,9 @@
     <script src="scripts/client.js" charset="utf-8"></script>
     <link rel="stylesheet" href="styles.css">
   </head>
-  <body ng-app="MyApp">
+  <body ng-app="myApp">
     <h1>Science 123 Quiz Question Generator</h1>
-    <div ng-controller="AppCtrl" class="md-padding checkboxdemoSyncing" style="min-height:270px">
+    <div ng-controller="AppCtrl as ac" class="md-padding checkboxdemoSyncing" style="min-height:270px">
       <div layout="row" layout-wrap="">
 
         <div flex="100" flex-gt-sm="50" layout="column">
@@ -32,9 +32,9 @@
             <fieldset class="standard">
               <legend>Using md-checkbox with ng-checked </legend>
               <div layout="row" layout-wrap="" flex="">
-                <div flex="50" ng-repeat="item in items">
-                  <md-checkbox ng-checked="exists(item, selected)" ng-click="toggle(item, selected)">
-                    {{ item }} <span ng-if="exists(item, selected)">selected</span>
+                <div flex="50" ng-repeat="item in ac.items">
+                  <md-checkbox ng-checked="ac.exists(item, ac.selected)" ng-click="ac.toggle(item, ac.selected)">
+                    {{ item }} <span ng-if="ac.exists(item, ac.selected)">selected</span>
                   </md-checkbox>
                 </div>
               </div>
@@ -47,9 +47,9 @@
             <fieldset class="standard">
               <legend>Using input type="checkbox"</legend>
               <div layout="row" layout-wrap="" flex="">
-                <div ng-repeat="item in items" class="standard" flex="50">
+                <div ng-repeat="item in ac.items" class="standard" flex="50">
                   <label>
-                    <input type="checkbox" ng-checked="exists(item, selected)" ng-click="toggle(item, selected)">
+                    <input type="checkbox" ng-checked="ac.exists(item, ac.selected)" ng-click="ac.toggle(item, ac.selected)">
                     {{ item }}
                   </label>
                 </div>
@@ -60,7 +60,7 @@
 
         <div flex="100">
           <h2 class="md-title">Selected Items</h2>
-          <code style="display: block; padding: 8px;">{{selected | json}}</code>
+          <code style="display: block; padding: 8px;">{{ac.selected | json}}</code>
         </div>
       </div>
 
